@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>field notes | madeof.glass</title>
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="wrapper nav">
+                {% include "nav.html" %}
+            </div>
+            <div class="wrapper note">
+                {% block content %}
+                {% endblock content %}
+            </div>
+            <div class="wrapper footer">
+                {% include "footer.html" %}
+            </div>
+        </div>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+    </body>
+</html>

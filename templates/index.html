@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Field Notes</h1>
+    {% if entries %}
+        <ul>
+        {% for entry, entry_data in entries %}
+            <li><a href="/{{ entry_data.slug }}">{{ entry_data.title }}</a> </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock content %}
