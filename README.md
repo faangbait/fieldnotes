@@ -4,7 +4,7 @@ A static html server with compiled-in-binary content sources. The goal of this p
 
 ## Usage:
 
-- Add content to serve in the `content/` directory. The filename will be the slug of the page.
+- Add content to serve in the `content/` directory. The filename will be the slug of the page. Content may use markdown formatting.
 - Update `fieldnotes.json` to include the slug, title, and unix epoch for publishing
 - Add templates in `templates/` using Jinja2/Tera syntax
 - Add static files in `static/`
