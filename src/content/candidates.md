@@ -24,7 +24,7 @@ Great candidates will find the Python 4 SME, even if they're in Finland, and sch
 
 Top candidates will ask why the developer of the 'requests' library wasn't directly involved in the launch of Python 4 from the start. They would have installed the first release candidate a year ago.
 
-### Search source for "InvalidSchema" / "No connection adapters were found."
+### Search source code or repository for "InvalidSchema" / "No connection adapters were found."
 This is the most logical diving-in step. It can help the candidate understand the scope of the problem; will it be a one-line change or a massive refactor?
 
 Great candidates will search the entire organization's repository, not just the source. Problems are rarely isolated.

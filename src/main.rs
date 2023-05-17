@@ -13,7 +13,7 @@ const STATIC_DIR: Dir = include_dir!("src/static");
 
 #[derive(Serialize, Clone)]
 pub struct FieldNote {
-    date_epoch: i64,
+    date_epoch: u64,
     title: String,
     body: String,
     slug: String
@@ -33,7 +33,7 @@ impl FieldNote {
             Err(e) => panic!("Serialization error(s): {}", e),
         };
 
-        let naive = NaiveDateTime::from_timestamp(self.date_epoch,0);
+        let naive = NaiveDateTime::from_timestamp(self.date_epoch.try_into().unwrap(),0);
         let datetime: DateTime<Utc> = DateTime::from_utc(naive, Utc);
         ctx.insert("date", &datetime.format("%B %-d, %Y").to_string());
 
@@ -47,7 +47,7 @@ impl FieldNote {
 #[derive(Deserialize)]
 pub struct FieldMetadata {
     title: String,
-    date: i64,
+    date: u64,
     slug: String,
 }
 
@@ -60,8 +60,10 @@ async fn main() {
     
     let tera = preload_templates();
     let fieldnotes = preload_notes();
+    let notes_sliced = fieldnotes.iter().map(|(_,v)| { v }).collect::<Vec<&FieldNote>>();
+    
     let mut context = get_default_context().unwrap();
-    context.insert("entries", &fieldnotes);
+    context.insert("entries", &notes_sliced);
     context.insert("title", "Field Notes");
     
     let index = warp::path::end().map(move || warp::reply::html(tera.render("index.html", &context).unwrap()));
@@ -116,7 +118,7 @@ fn preload_notes() -> HashMap<String, FieldNote> {
         serde_json::from_str(METADATA).expect("JSON not well formatted");
     
     for entry in notes_metadata {
-        let preloaded = CONTENT_DIR.get_file(entry.slug.clone());
+        let preloaded = CONTENT_DIR.get_file(entry.slug.clone() + ".md");
         let entry_body = match preloaded {
             Some(f) => match f.contents_utf8() {
                 Some(b) => markdown_to_html(b, &ComrakOptions::default()),
