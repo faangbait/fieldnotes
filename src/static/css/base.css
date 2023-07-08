@@ -147,6 +147,10 @@ blockquote {
         font: 1.5em/0 serif;
         color: #545454;
     }
+
+    > p > em > strong::before{
+        content: "—"
+    }
 }
 
 blockquote::before{

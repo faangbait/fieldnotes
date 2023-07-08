@@ -10,7 +10,7 @@ We just had a really good century. People who invested wisely made a ton of mone
 
 > The Market Can Remain Irrational Longer Than You Can Remain Solvent.
 >
-> ***—John Maynard Keynes***
+> ***John Maynard Keynes***
 
 I wonder what year it was when the someone thought of the "130-minus-your-age" rule. The premise is sound -- when you're younger, you're more risk tolerant, because you have plenty of time to make more money. You can be invested 100% in stocks, which ostensibly return more than bonds. As you get older, you have to preserve your existing capital, because you don't have time to lose it all and start over. 
 
