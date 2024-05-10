@@ -116,12 +116,15 @@ fn preload_notes() -> HashMap<String, FieldNote> {
     
     let notes_metadata: Vec<FieldMetadata> =
         serde_json::from_str(METADATA).expect("JSON not well formatted");
+
+    let mut options: ComrakOptions = ComrakOptions::default();
+    options.extension.table = true;
     
     for entry in notes_metadata {
         let preloaded = CONTENT_DIR.get_file(entry.slug.clone() + ".md");
         let entry_body = match preloaded {
             Some(f) => match f.contents_utf8() {
-                Some(b) => markdown_to_html(b, &ComrakOptions::default()),
+                Some(b) => markdown_to_html(b, &options),
                 None => String::new(),
             },
             None => String::new(),
